@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns.th="http://www.thymeleaf.org">
+
+<head>
+	<title>A Category</title>
+	<link href="/styles.css" rel="stylesheet">
+</head>
+
+<body>
+	<h1>A Single Category Review</h1>
+
+	<div th:each="category: ${categories}">
+		<h2><em>Below are category reviews of some spectacular travel destinations in Kenya.</em></h2>
+
+		<p>Type: <span th:text="${category.name}"></span></p>
+		<img th:src="${category.imgUrl}">
+		<p>Location: <span th:text="${category.location}"></span></p>
+		<div class="a">
+			<p><strong>This hotel's reviews are as shown below:</strong></p>
+		</div>
+		<div th:each="review: ${category.reviews}" class="reviews">
+			<br />
+			<p>Title: <span th:text="${review.title}"></span></p>
+			<p>Review Rating: <span th:text="${review.rating}"></span></p>
+			<p>Review Basis: <span th:text="${review.basis}"></span></p>
+
+		</div>
+		</tr>
+	</div>
+	<nav>
+		<a href="http://localhost:8080/show-categories">Categories</a>
+		<a href="http://localhost:8080/show-reviews">Reviews</a>
+	</nav>
+	<div>
+		<footer>
+			<p>&copy; 2018 Macharia's reviews site</p>
+		</footer>
+	</div>
+</body>
+
+</html>

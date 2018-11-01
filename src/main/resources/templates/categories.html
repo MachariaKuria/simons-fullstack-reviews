@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns.th="http://www.thymeleaf.org">
+
+<head>
+	<title>Categories</title>
+	<link href="/styles.css" rel="stylesheet">
+</head>
+
+<body>
+	<h1>Welcome to Macharia's Categories site</h1>
+
+	<h2>Below are categories for some travel destinations:</h2>
+	<div th:each="category: ${categories}">
+		<li>
+			<a th:href="@{/category(id=${category.id})}" th:text="${category.name}"></a>
+		</li>
+
+		<span class="ui_bubble_rating bubble_30" alt="3 of 5 bubbles" data-clicksource="BubbleRatingTrackingOnly"></span>
+	</div>
+	<nav>
+		<a href="http://localhost:8080/show-categories">Categories</a>
+		<a href="http://localhost:8080/show-reviews">Reviews</a>
+	</nav>
+
+	<div>
+		<footer>
+			<p>&copy; 2018 Macharia's reviews site</p>
+		</footer>
+	</div>
+</body>
+
+
+</html>

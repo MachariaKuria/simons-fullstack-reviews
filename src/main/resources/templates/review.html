@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns.th="http://www.thymeleaf.org">
+
+<head>
+	<title>A Review</title>
+
+	<link href="/styles.css" rel="stylesheet">
+</head>
+
+<body class="content">
+
+	<h1>A Single Hotel Review</h1>
+	<p>
+	Online review sites have transformed the way we do business and the way customers make decisions.</p>
+	Why the appeal of review sites? They offer consumers the ability to rave about your restaurant or talk bad about it.
+	It makes them feel better to post it online.
+	<p>
+		Additionally, review sites help your potential customers weed out their choices. Reviews help them decide if they’re
+		going to stop into your restaurant or the competition’s.
+		Public opinion has taken over the Internet, and if you aren’t currently perusing review sites, it’s time to find out
+		what your customers think.
+	</p>
+	<div class="b">
+		<em>Below you'll find a single review.</em>
+	</div>
+
+	<div th:each="review: ${reviews}">
+
+		<p>Title: <span th:text="${review.title}"></span></p>
+		<p>Review Rating: <span th:text="${review.rating}"></span></p>
+		<p>Review Basis: <span th:text="${review.basis}"></span></p>
+
+	</div>
+
+	<nav>
+		<a href="http://localhost:8080/show-categories">Categories</a>
+		<a href="http://localhost:8080/show-reviews">Reviews</a>
+	</nav>
+
+	<div>
+		<footer>
+			<p>&copy; 2018 Macharia's reviews site</p>
+		</footer>
+	</div>
+	
+</body>
+
+</html>
