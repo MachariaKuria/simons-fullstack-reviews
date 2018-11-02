@@ -3,11 +3,13 @@ package org.wecancodeit.reviews;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Category {
@@ -22,6 +24,7 @@ public class Category {
 
 	@ManyToMany
 	private Collection<Review> reviews;
+
 
 	public Category() {
 
@@ -54,6 +57,7 @@ public class Category {
 		this.location = location;
 		this.reviews = new HashSet<>(Arrays.asList(reviews));
 	}
+
 
 	@Override
 	public int hashCode() {

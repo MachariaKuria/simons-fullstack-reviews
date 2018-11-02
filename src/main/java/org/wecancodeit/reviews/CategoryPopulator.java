@@ -47,15 +47,15 @@ public class CategoryPopulator implements CommandLineRunner {
 		Review hilton = new Review("Internet", "*****", "Speed",buffet,gym,pool,wifi);
 		hilton = reviewRepo.save(hilton);
 
-		Category lakesideHotel = new Category("Lakeside Hotels - Mountain Lodge", "/images/MountainLodge.jpg",
+		Category lakesideHotel = new Category("Mountain Lodge", "/images/MountainLodge.jpg",
 				"Nanyuki, Kenya", treeTops, lakeSide);
-		Category mountainHotel = new Category("Montain Hotels - TreeTops", "/images/TreetopsLodge.jpg", "Nyeri, Kenya",
+		Category mountainHotel = new Category("TreeTops", "/images/TreetopsLodge.jpg", "Nyeri, Kenya",
 				treeTops, maraSopa);
-		Category plainHotel = new Category("Plain Hotels - Mara Sopa Lodge", "/images/AmboseliSerena.jpg",
+		Category plainHotel = new Category("Mara Sopa Lodge", "/images/AmboseliSerena.jpg",
 				"Amboseli, Kenya", maraSopa, lakeSide);
-		Category beachHotel = new Category("Beach Hotels - Nyali Beach Hotel", "/images/NyaliBeach.jpg",
+		Category beachHotel = new Category("Nyali Beach Hotel", "/images/NyaliBeach.jpg",
 				"Mombasa, Kenya", lakeSide, seaResort);
-		Category luxuryHotel = new Category("City Hotels - Hilton Hotel", "/images/Hilton.jpg", "New York, USA",
+		Category luxuryHotel = new Category("Hilton Hotel", "/images/Hilton.jpg", "New York, USA",
 				seaResort, hilton);
 
 		mountainHotel = categoryRepo.save(mountainHotel);

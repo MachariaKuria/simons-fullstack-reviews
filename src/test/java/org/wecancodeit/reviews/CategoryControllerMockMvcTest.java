@@ -188,17 +188,17 @@ public class CategoryControllerMockMvcTest {
 	public void shouldBeOkForAllTags() throws Exception {
 		mvc.perform(get("/show-tags")).andExpect(status().isOk());
 	}
-	/*
+	
 	@Test
-	public void shouldPutAllreviewsIntoModel() throws Exception{
-		Collection<Review> allReviews = Arrays.asList(review, anotherReview);
+	public void shouldPutAllTagsIntoModel() throws Exception{
+		Collection<Tag> allTags = Arrays.asList(tag, anotherTag);
 		
-		when(reviewRepo.findAll()).thenReturn(allReviews);
+		when(tagRepo.findAll()).thenReturn(allTags);
 		
-		mvc.perform(get("/show-reviews")).andExpect(model().attribute("reviews", is(allReviews)));
+		mvc.perform(get("/show-tags")).andExpect(model().attribute("tags", is(allTags)));
 	}
 	
-	*/
+	
 	
 	
 	
