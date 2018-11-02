@@ -2,25 +2,27 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>Categories</title>
+	<title>A Review</title>
+
 	<link href="/styles.css" rel="stylesheet">
 </head>
 
-<body>
-	<h1>Welcome to Macharia's Categories site</h1>
+<body class="content">
 
-	<h2>Below are categories for some travel destinations:</h2>
-	<div th:each="category: ${categories}">
-	<ul>
-		<li>
-			<a th:href="@{/category(id=${category.id})}" th:text="${category.name}"></a>
-		</li>
-	</ul>
+	<h1>A Single Tag</h1>
+
+	<div class="b">
+		<em>Below you'll find a single tag.</em>
 	</div>
+
+	<div th:each="tag: ${tags}">
+
+		<p>Title: <span th:text="${tag.tagName}"></span></p>
+	</div>
+
 	<nav>
 		<a href="http://localhost:8080/show-categories">Categories</a>
 		<a href="http://localhost:8080/show-reviews">Reviews</a>
-		<a href="http://localhost:8080/show-tags">Tags</a>
 	</nav>
 
 	<div>
@@ -28,7 +30,7 @@
 			<p>&copy; 2018 Macharia's reviews site</p>
 		</footer>
 	</div>
+	
 </body>
-
 
 </html>

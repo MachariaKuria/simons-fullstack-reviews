@@ -1,6 +1,8 @@
 package org.wecancodeit.reviews;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,6 +22,9 @@ public class Review {
 
 	@ManyToMany(mappedBy = "reviews")
 	private Collection<Category> categories;
+	
+	@ManyToMany
+	private Collection<Tag> tags;
 
 	public long getId() {
 
@@ -49,10 +54,15 @@ public class Review {
 
 	}
 
-	public Review(String title, String rating, String basis) {
+	public Collection<Tag> getTags() {
+		return tags;
+	}
+
+	public Review(String title, String rating, String basis, Tag...tags) {
 		this.title = title;
 		this.rating = rating;
 		this.basis = basis;
+		this.tags = new HashSet<>( Arrays.asList(tags));
 	}
 
 	@Override
@@ -76,4 +86,5 @@ public class Review {
 			return false;
 		return true;
 	}
+
 }

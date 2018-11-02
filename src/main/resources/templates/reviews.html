@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns.th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<title>Reviews</title>
@@ -14,22 +14,24 @@
 		Why the appeal of review sites? They offer consumers the ability to rave about your restaurant or talk bad about it.
 		It makes them feel better to post it online.
 	<p>
-		Additionally, review sites help your potential customers weed out their choices. Reviews help them decide if they’re
-		going to stop into your restaurant or the competition’s.
-		Public opinion has taken over the Internet, and if you aren’t currently perusing review sites, it’s time to find out
+		Additionally, review sites help your potential customers weed out their choices. Reviews help them decide if they are
+		going to stop into your restaurant or the competitions.
+		Public opinion has taken over the Internet, and if you are not currently perusing review sites, it is time to find out
 		what your customers think.
 	</p>
 	<div class="b">
 		<em>Below you'll find a list of all the reviews.</em>
 	</div>
 	<div th:each="review: ${reviews}">
+		<ul>
 		<li>
 			<a th:href="@{/review(id=${review.id})}" th:text="${review.title}"></a>
 		</li>
+		</ul>
 	</div>
 	<nav>
 		<a href="http://localhost:8080/show-categories">Categories</a>
-		<a href="http://localhost:8080/show-reviews">Reviews</a>
+		<a href="http://localhost:8080/show-tags">Tags</a>
 	</nav>
 
 	<div>

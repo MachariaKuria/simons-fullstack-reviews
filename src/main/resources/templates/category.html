@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns.th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<title>A Category</title>
@@ -19,17 +19,20 @@
 			<p><strong>This hotel's reviews are as shown below:</strong></p>
 		</div>
 		<div th:each="review: ${category.reviews}" class="reviews">
-			<br />
-			<p>Title: <span th:text="${review.title}"></span></p>
-			<p>Review Rating: <span th:text="${review.rating}"></span></p>
-			<p>Review Basis: <span th:text="${review.basis}"></span></p>
+
+			<ul>
+				<li>
+					<a th:href="@{/review(id=${review.id})}" th:text="${review.title}"></a>
+				</li>
+		   </ul>
 
 		</div>
-		</tr>
+		
 	</div>
 	<nav>
 		<a href="http://localhost:8080/show-categories">Categories</a>
 		<a href="http://localhost:8080/show-reviews">Reviews</a>
+		<a href="http://localhost:8080/show-tags">Tags</a>
 	</nav>
 	<div>
 		<footer>

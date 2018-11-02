@@ -45,7 +45,14 @@ public class CategoryControllerMockMvcTest {
 	@MockBean
 	private ReviewRepository reviewRepo;
 	
+	@Mock
+	private Tag tag;
 	
+	@Mock
+	private Tag anotherTag;	
+	
+	@MockBean
+	private TagRepository tagRepo;	
 
 	@Test
 	public void shouldRouteToSingleCategoryView() throws Exception {
@@ -55,7 +62,7 @@ public class CategoryControllerMockMvcTest {
 	}
 	
 	@Test
-	public void shouldBeOkForSingleCourse() throws Exception{
+	public void shouldBeOkForSingleCategory() throws Exception{
 		long arbitraryCategoryId = 111;
 		when(categoryRepo.findById(arbitraryCategoryId)).thenReturn(Optional.of(category));
 		mvc.perform(get("/category?id=111")).andExpect(status().isOk());
@@ -63,7 +70,7 @@ public class CategoryControllerMockMvcTest {
 
 
 	@Test
-	public void shouldNotBeOkForSingleCourse() throws Exception{
+	public void shouldNotBeOkForSingleCategory() throws Exception{
 		mvc.perform(get("/category?id=45")).andExpect(status().isNotFound());
 	}
 	
@@ -143,4 +150,57 @@ public class CategoryControllerMockMvcTest {
 		
 		mvc.perform(get("/show-reviews")).andExpect(model().attribute("reviews", is(allReviews)));
 	}
+	
+	@Test
+	public void shouldRouteToSingleTagView() throws Exception {
+		long arbitraryTagId=7;
+		when(tagRepo.findById(arbitraryTagId)).thenReturn(Optional.of(tag));
+		mvc.perform(get("/tag?id=7")).andExpect(view().name(is("tag")));
+	}
+	
+	@Test
+	public void shouldBeOkForSingleTag() throws Exception{
+		long arbitraryTagId = 111;
+		when(tagRepo.findById(arbitraryTagId)).thenReturn(Optional.of(tag));
+		mvc.perform(get("/tag?id=111")).andExpect(status().isOk());
+	}	
+	
+	@Test
+	public void shouldNotBeOkForSingleTag() throws Exception{
+		mvc.perform(get("/tag?id=45")).andExpect(status().isNotFound());
+	}
+	
+	@Test
+	public void shouldPutSingleTagIntoModel() throws Exception {
+		
+		when(tagRepo.findById(111L)).thenReturn(Optional.of(tag));
+		
+		mvc.perform(get("/tag?id=111")).andExpect(model().attribute("tags", is(tag)));
+	}
+	
+	@Test
+	public void shouldRouteToAllTagsView() throws Exception {
+		
+		mvc.perform(get("/show-tags")).andExpect(view().name(is("tags")));
+	}
+	
+	@Test
+	public void shouldBeOkForAllTags() throws Exception {
+		mvc.perform(get("/show-tags")).andExpect(status().isOk());
+	}
+	/*
+	@Test
+	public void shouldPutAllreviewsIntoModel() throws Exception{
+		Collection<Review> allReviews = Arrays.asList(review, anotherReview);
+		
+		when(reviewRepo.findAll()).thenReturn(allReviews);
+		
+		mvc.perform(get("/show-reviews")).andExpect(model().attribute("reviews", is(allReviews)));
+	}
+	
+	*/
+	
+	
+	
+	
 }

@@ -13,23 +13,38 @@ public class CategoryPopulator implements CommandLineRunner {
 
 	@Resource
 	private ReviewRepository reviewRepo;
+	
+	@Resource
+	private TagRepository tagRepo;	
 
 	@Override
 	public void run(String... args) throws Exception {
-
-		Review treeTops = new Review("Food", "****", "Variety");
+		
+		Tag buffet = new Tag("Buffet");
+		buffet = tagRepo.save(buffet);
+		Tag wifi = new Tag("Wifi");
+		wifi = tagRepo.save(wifi);
+		Tag gym = new Tag("Gym");
+		gym = tagRepo.save(gym);
+		Tag pool = new Tag("Pool");
+		pool = tagRepo.save(pool);
+		Tag customerServ = new Tag("Customer Service");
+		customerServ = tagRepo.save(customerServ);
+	
+		
+		Review treeTops = new Review("Food", "****", "Variety",buffet,customerServ);
 		treeTops = reviewRepo.save(treeTops);
 
-		Review maraSopa = new Review("Rooms", "****", "No of beds");
+		Review maraSopa = new Review("Gym", "****", "No of days",wifi,pool,customerServ);
 		maraSopa = reviewRepo.save(maraSopa);
 
-		Review lakeSide = new Review("Customer Service", "****", "Prompt");
+		Review lakeSide = new Review("Customer Service", "****", "Prompt",buffet,wifi,gym,pool);
 		lakeSide = reviewRepo.save(lakeSide);
 
-		Review seaResort = new Review("Beach Front", "****", "Ocean View");
+		Review seaResort = new Review("Beach Front", "****", "Ocean View",buffet,wifi,pool,customerServ);
 		seaResort = reviewRepo.save(seaResort);
 
-		Review hilton = new Review("Free WiFi", "*****", "Speed");
+		Review hilton = new Review("Internet", "*****", "Speed",buffet,gym,pool,wifi);
 		hilton = reviewRepo.save(hilton);
 
 		Category lakesideHotel = new Category("Lakeside Hotels - Mountain Lodge", "/images/MountainLodge.jpg",
