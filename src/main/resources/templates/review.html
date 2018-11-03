@@ -11,13 +11,14 @@
 
 	<h1>A Single Hotel Review</h1>
 	<p>
-	Online review sites have transformed the way we do business and the way customers make decisions.</p>
+		Online review sites have transformed the way we do business and the way customers make decisions.</p>
 	Why the appeal of review sites? They offer consumers the ability to rave about your restaurant or talk bad about it.
 	It makes them feel better to post it online.
 	<p>
 		Additionally, review sites help your potential customers weed out their choices. Reviews help them decide if they are
 		going to stop into your restaurant or the competitions.
-		Public opinion has taken over the Internet, and if you are not currently perusing review sites, it is time to find out
+		Public opinion has taken over the Internet, and if you are not currently perusing review sites, it is time to find
+		out
 		what your customers think.
 	</p>
 	<div class="b">
@@ -30,20 +31,51 @@
 		<p>Review Rating: <span th:text="${review.rating}"></span></p>
 		<p>Review Basis: <span th:text="${review.basis}"></span></p>
 
-	<p>Tags associated with this review:</p>
+		<p>Tags associated with this review:</p>
 		<div th:each="tag: ${review.tags}" class="tags">
-			 
+			<a th:href="@{/tag(id=${tag.id})}" th:text="${tag.tagName}"><span th:text="${tag.tagName}"></span></a>
+		</div>
+		<form method="POST">
+		<section>
+			<input type="hidden" th:value="${review.id}" name="reviewId"/>
+			<input type="text" name="tagName"/>
+			<button th:formaction="@{/add-tag}">add tag with HTML Forms</button>
+		</section>
+		</form>
+		<form method="POST">
+			<input name="reviewId" type="hidden" th:value="${review.Id}"/>
 			<ul>
-				<li>
-					<a th:href="@{/tag(id=${tag.id})}" th:text="${tag.tagName}"><span th:text="${tag.tagName}"></span></a>
+				<li th:each="tag: ${review.tags}"><span th:text="${tag.tagName}"></span>
+				<button id="x" name="tagId" th:value="${tag.Id}" th:formaction="@{/remove-tag-button}">&times;</button>
 				</li>
-		</ul>
+			</ul>
+		</form>
+		
+		<div class="add-comment">
+			<form method="POST">
+				<section>
+					<label>Enter your Name: </label>
+					<input type="text" name="author"/>
+				</section>
+				<section>
+						<label>Give a review: </label>
+						<input type="text" name="content"/>
+				</section>
+				<section>
+					<input type="hidden" th:value="${review.id}" name="reviewId"/>
+					<!-- <input type="text" name="tagName"/> -->
+				</section>
+				<section>
+					<button th:formaction = "@{/add-comment}">Add Comment</button>
+				</section>
+			</form>
+
+			<div th:each="comment: ${review.comments}">
+				<h5><span th:text="${comment.author}"> Commenter </span> Says....</h5>
+				<p th:text="${comment.content}"></p>
+			</div>
 
 		</div>
-
-
-
-
 	</div>
 	<nav>
 		<a href="http://localhost:8080/show-categories">Categories</a>
@@ -56,7 +88,7 @@
 			<p>&copy; 2018 Macharia's reviews site</p>
 		</footer>
 	</div>
-	
+
 </body>
 
 </html>

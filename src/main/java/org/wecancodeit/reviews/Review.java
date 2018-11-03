@@ -66,6 +66,18 @@ public class Review {
 		return tags;
 	}
 
+	// allowing the collection to add this tag we created in our form.
+	public void addTag(Tag newTag) {
+		tags.add(newTag);
+
+	}
+
+	// allowing the collection to have a tag removed.
+	public void removeTag(Tag tagToRemove) {
+		tags.remove(tagToRemove);
+
+	}
+
 	public Review(String title, String rating, String basis, Tag...tags) {
 		this.title = title;
 		this.rating = rating;
@@ -94,6 +106,7 @@ public class Review {
 			return false;
 		return true;
 	}
+
 
 
 }
