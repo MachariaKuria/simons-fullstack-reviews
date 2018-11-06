@@ -2,6 +2,7 @@
 
 <head>
     <title>Tags Page</title>
+    <link href="/styles.css" rel="stylesheet">
 </head>
 
 <body>
@@ -28,7 +29,7 @@
                 <ul>
                     <li th:if="${tags.size() == 0}"> Currently no tags.. Please add one!</li>
                     <li th:if="${tags.size() !=0}" th:each="tag:${tags}">
-                        <a th:href="@{/tag(id=${tag.id)})}" th:text="${tag.tagName}"></a>
+                      <a th:href="@{/tag(id=${tag.id})}" th:text="${tag.tagName}"></a>
                     </li>
                 </ul>
             </section>
@@ -36,6 +37,18 @@
         </div>
 
     </div>
+    
+    	<nav>
+		<a href="http://localhost:8080/show-categories">Categories</a>
+		<a href="http://localhost:8080/show-reviews">Reviews</a>
+		<a href="http://localhost:8080/show-tags">Tags</a>
+	</nav>
+
+	<div>
+		<footer>
+			<p>&copy; 2018 Macharia's reviews site</p>
+		</footer>
+	</div>
     <script src="./js/server-requests.js"></script>
 </body>
 

@@ -91,6 +91,8 @@ public class TagController {
 		Tag tagToDelete = tagRepo.findByTagName(tagName); 
 			if(tagRepo.findByTagName(tagName) != null) {
 				for(Review review: tagToDelete.getReviews()) {
+					review.removeTag(tagToDelete);
+					reviewRepo.save(review);
 				}
 			}
 			

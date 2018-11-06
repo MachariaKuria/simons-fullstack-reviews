@@ -6,18 +6,18 @@ const tagRemoveInput = document.querySelector('.remove-tag input');
 
 const xhr = new XMLHttpRequest();
 xhr.onreadystatechange = function(){
-    if(xhr.readyState == 4 && xhr.status == 200){
+    if(xhr.readyState === 4 && xhr.status === 200){
         const res = xhr.responseText;
         tagsList.innerHTML = res;
     }
 }
 
 tagAddButton.addEventListener('click',function(){
-        postTags(tagsAddInput.value)
+        postTags(tagAddInput.value);
         tagAddInput.value = "";
 });
 
-function postTag(tagName){
+function postTags(tagName){
     xhr.open('POST','/tags/' + tagName, true);
     xhr.send();
 }
@@ -26,7 +26,7 @@ tagRemoveButton.addEventListener('click',function(){
     var ask = confirm('Are you sure you want to remove this tag?');
 
     if(ask == true) {
-        removeTags(tagRemoveInput);
+        removeTags(tagRemoveInput.value);
         tagRemoveInput.value="";
     }
 

@@ -9,7 +9,7 @@
 			max-width: 800px;
 			padding: 0;
 		}
-
+		
 		nav {
 			display: flex;
 			flex-flow: row; 
@@ -70,3 +70,6 @@
 			text-align: center;
 		}
 		
+		.container {
+			padding-top: 10px;
+		}
