@@ -24,39 +24,39 @@ public class CategoryPopulator implements CommandLineRunner {
 		buffet = tagRepo.save(buffet);
 		Tag wifi = new Tag("Wifi");
 		wifi = tagRepo.save(wifi);
-		Tag gym = new Tag("Gym");
-		gym = tagRepo.save(gym);
+		Tag workout = new Tag("Workout");
+		workout = tagRepo.save(workout);
 		Tag pool = new Tag("Pool");
 		pool = tagRepo.save(pool);
 		Tag customerServ = new Tag("Customer Service");
 		customerServ = tagRepo.save(customerServ);
 	
 		
-		Review treeTops = new Review("Food", "****", "Variety",buffet,customerServ);
-		treeTops = reviewRepo.save(treeTops);
+		Review food = new Review("Food", "****", "Variety",buffet,customerServ);
+		food = reviewRepo.save(food);
 
-		Review maraSopa = new Review("Gym", "****", "No of days",wifi,pool,customerServ);
-		maraSopa = reviewRepo.save(maraSopa);
+		Review gym = new Review("Gym", "****", "No of days",wifi,pool,customerServ);
+		gym = reviewRepo.save(gym);
 
-		Review lakeSide = new Review("Customer Service", "****", "Prompt",buffet,wifi,gym,pool);
+		Review lakeSide = new Review("Customer Service", "****", "Prompt",buffet,wifi,workout,pool);
 		lakeSide = reviewRepo.save(lakeSide);
 
-		Review seaResort = new Review("Beach Front", "****", "Ocean View",buffet,wifi,pool,customerServ);
+		Review seaResort = new Review("Ocean View", "****", "Beach Front",buffet,wifi,pool,customerServ);
 		seaResort = reviewRepo.save(seaResort);
 
-		Review hilton = new Review("Internet", "*****", "Speed",buffet,gym,pool,wifi);
+		Review hilton = new Review("Internet", "*****", "Speed",buffet,workout,pool,wifi);
 		hilton = reviewRepo.save(hilton);
 
 		Category lakesideHotel = new Category("Mountain Lodge", "/images/MountainLodge.jpg",
-				"Nanyuki, Kenya", treeTops, lakeSide);
+				"Nanyuki, Kenya", food, lakeSide);
 		Category mountainHotel = new Category("TreeTops", "/images/TreetopsLodge.jpg", "Nyeri, Kenya",
-				treeTops, maraSopa);
+				food, gym);
 		Category plainHotel = new Category("Mara Sopa Lodge", "/images/AmboseliSerena.jpg",
-				"Amboseli, Kenya", maraSopa, lakeSide);
+				"Amboseli, Kenya", gym, lakeSide);
 		Category beachHotel = new Category("Nyali Beach Hotel", "/images/NyaliBeach.jpg",
 				"Mombasa, Kenya", lakeSide, seaResort);
 		Category luxuryHotel = new Category("Hilton Hotel", "/images/Hilton.jpg", "New York, USA",
-				seaResort, hilton);
+				gym, hilton);
 
 		mountainHotel = categoryRepo.save(mountainHotel);
 		plainHotel = categoryRepo.save(plainHotel);
